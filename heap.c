@@ -25,18 +25,6 @@ void* heap_top(Heap* pq){
   return pq->heapArray[0].data;
 }
 
-int cm_priority (const void* a,const void* b)
-{
-  heapElem* aa =(heapElem*)a;
-  heapElem* bb =(heapElem*)b;
-  return ((bb->priority)-(aa->priority));
-}
-
-void reorder_heap(Heap* h)
-{
-  qsort(h->heapArray,h->size,sizeof(heapElem),cm_priority);
-}
-
 void heap_push(Heap* pq, void* data, int priority)
 {
   int index =(pq->size);
@@ -48,7 +36,6 @@ void heap_push(Heap* pq, void* data, int priority)
   pq->heapArray[index].data =(data);
   pq->heapArray[index].priority =(priority);
   pq->size =((pq->size)+1);
-  //reorder_heap(pq);
 }
 
 
