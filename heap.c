@@ -41,10 +41,10 @@ void heap_push(Heap* pq, void* data, int priority)
 
 void heap_pop(Heap* pq)
 {
-  /*for(int i =1;i<pq->size;i++)
+  for(int i =0;i<pq->size;i++)
   {
     pq->heapArray[i] =pq->heapArray[i+1];
-  }*/
+  }
 }
 
 heapElem* create_heapArray()
