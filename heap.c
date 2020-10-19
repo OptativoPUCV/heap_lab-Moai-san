@@ -53,7 +53,7 @@ void heap_pop(Heap* pq)
       else
       {
         pq->heapArray[i] =pq->heapArray[i+1];
-        pq->size--;
+        //pq->size--;
       }
     }
   }
