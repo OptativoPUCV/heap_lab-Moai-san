@@ -46,7 +46,6 @@ int get_pIndex(int index)
   int pIndex;
   if(index%2==0)
   {
-    printf("hola \n");
     pIndex =get_pIndex(index-1);
   }
   else
@@ -54,6 +53,7 @@ int get_pIndex(int index)
     pIndex =index-parentFloor;
     if(pIndex>parentFloor)
     {
+      printf("hola \n");
       pIndex =pIndex-1;
     }
   }
