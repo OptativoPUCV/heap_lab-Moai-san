@@ -65,6 +65,7 @@ void switch_Node(heapElem* elemArray,int index)
   int pIndex =get_pIndex(index);
   while(1)
   {
+    printf("%d \n",index);
     if(elemArray[index].priority > elemArray[pIndex].priority)
     {
       aux.data =elemArray[pIndex].data;
@@ -92,7 +93,6 @@ void heap_push(Heap* pq, void* data, int priority)
   }
   pq->heapArray[index].data =(data);
   pq->heapArray[index].priority =(priority);
-  printf("%d \n",index);
   printf("%d \n",pq->heapArray[index].priority);
   if (index!=0)
   {
