@@ -40,11 +40,25 @@ int get_pFloor(int index)
   return (parentFloor);
 }
 
+int get_pIndex(int index)
+{
+  int parentFloor =get_pFloor(index);
+  int pIndex;
+  if(index%2==0)
+  {
+    pIndex =index-parentFloor-1;
+  }
+  else
+  {
+    pIndex =index-parentFloor;
+  }
+  return (pIndex);
+}
+
 void switch_Node(heapElem* elemArray,int index)
 {
   heapElem aux;
-  int parentFloor =get_pFloor(index);
-  int pIndex =index-parentFloor;
+  int pIndex =get_pIndex(index);
   while(1)
   {
     if(elemArray[index].priority > elemArray[pIndex].priority)
@@ -53,8 +67,7 @@ void switch_Node(heapElem* elemArray,int index)
       memcpy(&elemArray[pIndex],&elemArray[index],sizeof(heapElem));
       memcpy(&elemArray[index],&aux,sizeof(heapElem));
       index =pIndex;
-      parentFloor =get_pFloor(index);
-      pIndex =index-parentFloor;
+      pIndex =get_pIndex(index);
     }
     else
     {
