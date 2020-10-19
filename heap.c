@@ -47,6 +47,10 @@ int get_pFloor(int index)
 
 int get_pIndex(int index)
 {
+  if(index==0)
+  {
+    return 0;
+  }
   int parentFloor =get_pFloor(index);
   int pIndex;
   if(index%2==0)
