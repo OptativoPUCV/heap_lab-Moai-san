@@ -25,34 +25,54 @@ void* heap_top(Heap* pq){
   return pq->heapArray[0].data;
 }
 
-void heap_push(Heap* pq, void* data, int priority)
+/*piso tiene 2 a la n nodos, piso raiz 2 a la 0, y asi en adelante
+entonces, para cumplir con la propiedad, se debe ver al padre solamente
+por lo cual, debemos ver cual es nuestro current, y desde esa premisa
+modificar nuestra posicion, si nuestra posicion es 5 o 6, nuestro padre es 2
+osea, esto lo representamos matematicamente como pos-(piso del padre)*/
+int get_pFloor(int index)
 {
-  int index =(pq->size);
-  if(index%2!=0)
+  int parentFloor =1;
+  while(parentFloor*2<index)
   {
-    if (priority > pq->heapArray[index-1].priority)
+    parentFloor =parentFloor*2;
+  }
+  return (parentFloor);
+}
+
+void switch_Node(heapElem* elemArray,int index)
+{
+  heapElem aux;
+  int parentFloor =get_pFloor(index);
+  int pIndex =index-parentFloor;
+  while(1)
+  {
+    if(elemArray[index].priority > elemArray[pIndex].priority)
     {
-      pq->heapArray[index].priority =pq->heapArray[index-1].priority;
-      pq->heapArray[index].data =pq->heapArray[index-1].data;
-      pq->heapArray[index-1].priority =priority;
-      pq->heapArray[index-1].data =data;
+      memcpy(&aux,&elemArray[pIndex],sizeof(heapElem));
+      memcpy(&elemArray[pIndex],&elemArray[index],sizeof(heapElem));
+      memcpy(&elemArray[index],&aux,sizeof(heapElem));
+      index =pIndex;
+      parentFloor =get_pFloor(index);
+      pIndex =index-parentFloor;
     }
     else
     {
-      pq->heapArray[index].data =(data);
-      pq->heapArray[index].priority =(priority);
+      break;
     }
   }
-  else
-  {
-    pq->heapArray[index].data =(data);
-    pq->heapArray[index].priority =(priority);
-  }
-  if ((pq->size)>=(pq->capac))
+}
+void heap_push(Heap* pq, void* data, int priority)
+{
+  int index =(pq->size);
+  if ((pq->size)==(pq->capac))
   {
     pq->capac =((2*(pq->capac))+1);
     pq->heapArray =realloc(pq->heapArray,((pq->capac)*sizeof(heapElem)));
   }
+  pq->heapArray[index].data =(data);
+  pq->heapArray[index].priority =(priority);
+  switch_Node(pq->heapArray,index);
   pq->size =((pq->size)+1);
 }
 
