@@ -33,7 +33,7 @@ osea, esto lo representamos matematicamente como pos-(piso del padre)*/
 int get_pFloor(int index)
 {
   int parentFloor =1;
-  while(parentFloor*2<index)
+  while((parentFloor*2<index)&&(index-parentFloor>parentFloor))
   {
     parentFloor =parentFloor*2;
   }
