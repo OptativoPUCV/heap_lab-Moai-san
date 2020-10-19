@@ -37,6 +37,7 @@ int get_pFloor(int index)
   {
     parentFloor =parentFloor*2;
   }
+  printf("%d\n",parentFloor);
   return (parentFloor);
 }
 
