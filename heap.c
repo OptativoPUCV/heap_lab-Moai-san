@@ -55,6 +55,7 @@ int get_pIndex(int index)
     {
       pIndex =pIndex-1;
     }
+    printf("hola \n");
   }
   return (pIndex);
 }
