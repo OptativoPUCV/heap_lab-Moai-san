@@ -88,10 +88,12 @@ void heap_push(Heap* pq, void* data, int priority)
   }
   pq->heapArray[index].data =(data);
   pq->heapArray[index].priority =(priority);
+  printf("%d \n",pq->heapArray[index].priority);
   if (index!=0)
   {
     switch_Node(pq->heapArray,index);
   }
+  printf("%d \n",pq->heapArray[index].priority);
   pq->size =((pq->size)+1);
 }
 
