@@ -53,9 +53,9 @@ int get_pIndex(int index)
     pIndex =index-parentFloor;
     if(pIndex>parentFloor)
     {
-      printf("hola \n");
       pIndex =pIndex-1;
     }
+    printf("hola %d \n",parentFloor);
   }
   return (pIndex);
 }
