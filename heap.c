@@ -33,6 +33,6 @@ void heap_pop(Heap* pq){
 }
 
 Heap* createHeap(){
-
-   return NULL;
+  Heap* output =(Heap*)calloc(3,sizeof(Heap));
+  return output;
 }
