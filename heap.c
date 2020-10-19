@@ -32,7 +32,16 @@ void heap_pop(Heap* pq){
 
 }
 
-Heap* createHeap(){
-  Heap* output =(Heap*)calloc(3,sizeof(Heap));
+heapElem* create_heapArray()
+{
+  heapElem* output =(heapElem*)calloc(3,sizeof(heapElem));
+  return(output);
+}
+
+Heap* createHeap()
+{
+  Heap* output =(Heap*)calloc(1,sizeof(Heap));
+  output->heapArray =create_heapArray();
+  output->capac =3;
   return output;
 }
