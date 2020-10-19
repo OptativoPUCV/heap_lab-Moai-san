@@ -92,6 +92,7 @@ void heap_push(Heap* pq, void* data, int priority)
   }
   pq->heapArray[index].data =(data);
   pq->heapArray[index].priority =(priority);
+  printf("%d \n",index);
   printf("%d \n",pq->heapArray[index].priority);
   if (index!=0)
   {
