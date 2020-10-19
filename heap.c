@@ -51,10 +51,10 @@ int get_pIndex(int index)
   else
   {
     pIndex =index-parentFloor;
-    if(pIndex>parentFloor)
+    /*if(pIndex>parentFloor)
     {
       pIndex =pIndex-1;
-    }
+    }*/
   }
   return (pIndex);
 }
