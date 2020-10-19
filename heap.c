@@ -46,6 +46,7 @@ int get_pIndex(int index)
   int pIndex;
   if(index%2==0)
   {
+    printf("hola \n");
     pIndex =get_pIndex(index-1);
   }
   else
@@ -55,7 +56,6 @@ int get_pIndex(int index)
     {
       pIndex =pIndex-1;
     }
-    printf("hola \n");
   }
   return (pIndex);
 }
