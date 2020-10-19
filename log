@@ -160,3 +160,9 @@ Mon Oct 19 20:38:23 UTC 2020:
  tests:  2|2
 total_score: 25/70
 afa8877
+Mon Oct 19 20:39:35 UTC 2020: 
+ heap.c | 3 +++
+ 1 file changed, 3 insertions(+)
+ tests:  2|2
+total_score: 25/70
+7a1760c

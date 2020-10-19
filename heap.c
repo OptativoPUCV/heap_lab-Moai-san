@@ -72,7 +72,10 @@ void heap_push(Heap* pq, void* data, int priority)
   }
   pq->heapArray[index].data =(data);
   pq->heapArray[index].priority =(priority);
-  switch_Node(pq->heapArray,index);
+  if (index!=0)
+  {
+    switch_Node(pq->heapArray,index);
+  }
   pq->size =((pq->size)+1);
 }
 
