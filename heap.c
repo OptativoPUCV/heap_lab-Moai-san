@@ -41,6 +41,7 @@ void heap_push(Heap* pq, void* data, int priority)
 
 void heap_pop(Heap* pq)
 {
+  pq->heapArray[0].priority =0;
   for(int i =0;i<pq->size;i++)
   {
     printf("\n%d\n",pq->heapArray[i].priority);
