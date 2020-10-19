@@ -63,9 +63,12 @@ void switch_Node(heapElem* elemArray,int index)
   {
     if(elemArray[index].priority > elemArray[pIndex].priority)
     {
-      memcpy(&aux,&elemArray[pIndex],sizeof(heapElem));
-      memcpy(&elemArray[pIndex],&elemArray[index],sizeof(heapElem));
-      memcpy(&elemArray[index],&aux,sizeof(heapElem));
+      aux.data =elemArray[pIndex].data;
+      aux.priority =elemArray[pIndex].priority;
+      elemArray[pIndex].data =elemArray[index].data;
+      elemArray[pIndex].priority =elemArray[index].priority;
+      elemArray[index].data =aux.data;
+      elemArray[index].priority =aux.priority;
       index =pIndex;
       pIndex =get_pIndex(index);
     }
