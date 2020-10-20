@@ -340,3 +340,9 @@ Tue Oct 20 06:27:56 UTC 2020:
  tests:  7|1
 total_score: 55/70
 ed774fe
+Tue Oct 20 06:28:09 UTC 2020: 
+ heap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  8|0
+total_score: 70/70
+ea64090
