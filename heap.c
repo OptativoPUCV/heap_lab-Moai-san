@@ -67,7 +67,7 @@ int get_pIndex(int index)
   return (pIndex);
 }
 
-void switch_Node(heapElem* elemArray,int index)
+void switch_PNode(heapElem* elemArray,int index)
 {
   heapElem aux;
   int pIndex =get_pIndex(index);
@@ -90,6 +90,7 @@ void switch_Node(heapElem* elemArray,int index)
     }
   }
 }
+
 void heap_push(Heap* pq, void* data, int priority)
 {
   int index =(pq->size);
@@ -102,33 +103,41 @@ void heap_push(Heap* pq, void* data, int priority)
   pq->heapArray[index].priority =(priority);
   if (index!=0)
   {
-    switch_Node(pq->heapArray,index);
+    switch_PNode(pq->heapArray,index);
   }
   pq->size =((pq->size)+1);
 }
 
+void behead(heapElem* elemArray,int last)
+{
+  elemArray[0].data=elemArray[last].data;
+  elemArray[0].priority=elemArray[last].priority;
+}
 
 void heap_pop(Heap* pq)
 {
-  pq->heapArray[0] =pq->heapArray[1];
-  for(int i =0;i<pq->size;i++)
+  behead(pq->heapArray,(pq->size)-1);
+  pq->size--;
+  int current =0;
+  heapElem aux;
+  while(1)
   {
-    printf("\n%d\n",pq->heapArray[i].priority);
-    if(i%2==0)
+    aux =pq->heapArray[current];
+    if((pq->heapArray[(2*current)+1].priority)<(pq->heapArray[(2*current)+2].priority))
     {
-      if(i+2<pq->size)
-      {
-        if(pq->heapArray[i].priority<pq->heapArray[i+2].priority)
-        {
-          pq->heapArray[i] =pq->heapArray[i+2];
-        }
-      }
-      else
-      {
-        pq->heapArray[i] =pq->heapArray[i+1];
-        pq->size--;
-      }
+      pq->heapArray[current] =pq->heapArray[(2*current)+2];
+      pq->heapArray[(2*current)+2] =aux;
+      current =(2*current)+2;
+      continue;
     }
+    if((pq->heapArray[(2*current)+2].priority)<(pq->heapArray[(2*current)+1].priority))
+    {
+      pq->heapArray[current] =pq->heapArray[(2*current)+1];
+      pq->heapArray[(2*current)+1] =aux;
+      current =(2*current)+1;
+      continue;
+    }
+    break;
   }
 }
 
