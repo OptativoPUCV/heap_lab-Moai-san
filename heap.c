@@ -128,23 +128,26 @@ void heap_pop(Heap* pq)
   {
     printf("%d\n",current);
     aux =pq->heapArray[current];
-    if((pq->heapArray[aSon].priority)<(pq->heapArray[bSon].priority))
+    if((aSon<=pq->size)&&(bSon<=pq->size))
     {
-      pq->heapArray[current] =pq->heapArray[bSon];
-      pq->heapArray[bSon] =aux;
-      current =bSon;
-      aSon =(2*current)+1;
-      bSon =(2*current)+2;
-      continue;
-    }
-    if((pq->heapArray[bSon].priority)<(pq->heapArray[aSon].priority))
-    {
-      pq->heapArray[current] =pq->heapArray[aSon];
-      pq->heapArray[aSon] =aux;
-      current =aSon;
-      aSon =(2*current)+1;
-      bSon =(2*current)+2;
-      continue;
+      if((pq->heapArray[aSon].priority)<(pq->heapArray[bSon].priority))
+      {
+        pq->heapArray[current] =pq->heapArray[bSon];
+        pq->heapArray[bSon] =aux;
+        current =bSon;
+        aSon =(2*current)+1;
+        bSon =(2*current)+2;
+        continue;
+      }
+      if((pq->heapArray[bSon].priority)<(pq->heapArray[aSon].priority))
+      {
+        pq->heapArray[current] =pq->heapArray[aSon];
+        pq->heapArray[aSon] =aux;
+        current =aSon;
+        aSon =(2*current)+1;
+        bSon =(2*current)+2;
+        continue;
+      }
     }
     break;
   }
