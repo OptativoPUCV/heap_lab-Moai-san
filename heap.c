@@ -112,6 +112,8 @@ void behead(heapElem* elemArray,int last)
 {
   elemArray[0].data=elemArray[last].data;
   elemArray[0].priority=elemArray[last].priority;
+  elemArray[last].priority =0;
+  elemArray[last].data =NULL;
 }
 
 void heap_pop(Heap* pq)
