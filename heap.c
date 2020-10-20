@@ -124,7 +124,6 @@ void heap_pop(Heap* pq)
   heapElem aux;
   while(1)
   {
-    printf("%d\n",current);
     aux =pq->heapArray[current];
     if((aSon<=pq->size)&&(bSon<=pq->size))
     {
