@@ -122,6 +122,7 @@ void heap_pop(Heap* pq)
   heapElem aux;
   while(1)
   {
+    printf("%d\n",pq->heapArray[current].priority);
     aux =pq->heapArray[current];
     if((pq->heapArray[(2*current)+1].priority)<(pq->heapArray[(2*current)+2].priority))
     {
