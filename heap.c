@@ -121,23 +121,29 @@ void heap_pop(Heap* pq)
   behead(pq->heapArray,(pq->size)-1);
   pq->size--;
   int current =0;
+  int aSon =1;
+  int bSon =2;
   heapElem aux;
   while(1)
   {
     printf("%d\n",current);
     aux =pq->heapArray[current];
-    if((pq->heapArray[(2*current)+1].priority)<(pq->heapArray[(2*current)+2].priority))
+    if((pq->heapArray[aSon].priority)<(pq->heapArray[bSon].priority))
     {
-      pq->heapArray[current] =pq->heapArray[(2*current)+2];
-      pq->heapArray[(2*current)+2] =aux;
-      current =(2*current)+2;
+      pq->heapArray[current] =pq->heapArray[bSon];
+      pq->heapArray[bSon] =aux;
+      current =bSon;
+      aSon =(2*current)+1;
+      bSon =(2*current)+2;
       continue;
     }
-    if((pq->heapArray[(2*current)+2].priority)<(pq->heapArray[(2*current)+1].priority))
+    if((pq->heapArray[bSon].priority)<(pq->heapArray[aSon].priority))
     {
-      pq->heapArray[current] =pq->heapArray[(2*current)+1];
-      pq->heapArray[(2*current)+1] =aux;
-      current =(2*current)+1;
+      pq->heapArray[current] =pq->heapArray[aSon];
+      pq->heapArray[aSon] =aux;
+      current =aSon;
+      aSon =(2*current)+1;
+      bSon =(2*current)+2;
       continue;
     }
     break;
